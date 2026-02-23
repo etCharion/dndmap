@@ -1,16 +1,38 @@
-# React + Vite
+# DnD Map App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Jednoduchá aplikace pro promítání DnD map s žetony postav a systémem "Fog of War" (Mlha).
 
-Currently, two official plugins are available:
+## Jak aplikaci spustit lokálně
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Nainstalujte závislosti:
+   ```bash
+   npm install
+   ```
+2. Spusťte vývojový server:
+   ```bash
+   npm run dev
+   ```
+3. Otevřete prohlížeč na adrese, kterou vám Vite ukáže (obvykle `http://localhost:5173`).
 
-## React Compiler
+## Používání aplikace
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Herní část**: Hlavní adresa aplikace. Slouží pro hráče (nebo pro zobrazení na TV).
+- **Administrace**: Přidejte `#admin` na konec URL (např. `http://localhost:5173/#admin`). Zde můžete vybírat mapy, přidávat postavy a definovat skryté oblasti.
 
-## Expanding the ESLint configuration
+## Struktura souborů pro GitHub
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Aplikace automaticky načítá obrázky z následujících složek ve vašem repozitáři:
+- `maps/` - Zde nahrajte obrázky map (JPG/PNG/WebP, až 100MB).
+- `characters/` - Zde nahrajte obrázky postav (ideálně čtvercové).
+
+## Nasazení na GitHub Pages
+
+Aplikace je připravena pro nasazení na GitHub Pages. Protože používá React, je potřeba ji před nahráním "sestavit" (build):
+
+1. Spusťte příkaz:
+   ```bash
+   npm run build
+   ```
+2. Obsah složky `dist/` nahrajte do větve `gh-pages` nebo nastavte GitHub Pages tak, aby se spouštěly z této složky.
+
+**Důležité**: Pokud aplikaci otevíráte přímo ze souborového systému (poklepáním na `index.html`), nebude fungovat kvůli omezením prohlížeče pro moduly a JSX. Vždy použijte `npm run dev` nebo sestavenou verzi v `dist/`.
